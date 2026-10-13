@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 // Needs RESEND_API_KEY in Vercel > Project > Settings > Environment Variables.
 
 const FROM = "Reliability Waitlist <waitlist@reliability.gridinnovationhub.com>";
-const DEFAULT_TO = "ashaw@integconsulting.com";
+const DEFAULT_TO = "ashaw@integconsulting.com,mgangumalla@integconsulting.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 // Light per-IP limit (per warm instance) to stop bursts and bots.
