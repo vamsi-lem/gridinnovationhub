@@ -48,8 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openModal() {
     modal.hidden = false;
-    const saved = getSavedEmail();
-    if (saved && !emailInput.value) emailInput.value = saved;
     syncState();
     emailInput.focus();
   }
@@ -116,7 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       saveEmail(email);
       isSubmitting = false;
-      setButton("Submitted", true);
+      form.reset();
+      setButton(BUTTON_LABEL, false);
       setMessage("Thank you! You're on the waitlist. We'll email you when registration opens.", "success");
     } catch (error) {
       console.error("Waitlist submission error:", error);

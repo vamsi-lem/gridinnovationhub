@@ -860,6 +860,29 @@
         gap: 20px
       }
 
+      /* Mobile: show hero buttons between the date and the theme line */
+      #top .when {
+        display: contents
+      }
+
+      #top .when br {
+        display: none
+      }
+
+      #top .when .date {
+        justify-self: center;
+        margin-bottom: 0
+      }
+
+      #top .when .theme,
+      #top .lede {
+        order: 1
+      }
+
+      #top .soon {
+        order: 2
+      }
+
       .hero .lede {
         font-size: 17px
       }
