@@ -1057,6 +1057,81 @@
         max-width: 160px
       }
     }
+
+    
+.waitlist-modal[hidden] {
+  display: none !important;
+}
+
+.waitlist-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.waitlist-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+}
+
+.waitlist-box h2 {
+  margin: 0 0 12px;
+}
+
+.waitlist-box input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 8px 0 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.waitlist-box label {
+  display: block;
+  font-weight: 600;
+}
+
+.waitlist-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: 0;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#waitlistMessage {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+#waitlistMessage.is-success {
+  color: #137333;
+}
+
+#waitlistMessage.is-error {
+  color: #c5221f;
+}
+
+#waitlistSubmit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
   </style>
 </head>
 
@@ -1250,13 +1325,59 @@
           <h2>Be first to register</h2>
           <p>Registration opens November 2. Join the waitlist and we'll email you when it opens, along with the first
             speaker announcements.</p>
-          <a class="btn" href="#waitlist" data-go="main">Join the waitlist <svg class="ico" aria-hidden="true">
-              <use href="#gih-arrow" />
-            </svg></a>
+          
+<button class="btn" type="button" id="openWaitlist">
+  Join the waitlist
+  <svg class="ico" aria-hidden="true">
+    <use href="#gih-arrow" />
+  </svg>
+</button>
+
         </div>
       </div>
     </section>
   </main>
+
+  
+<div class="waitlist-modal" id="waitlistModal" hidden>
+  <div class="waitlist-box" role="dialog"
+       aria-modal="true" aria-labelledby="waitlistTitle">
+
+    <button type="button" class="waitlist-close"
+            id="closeWaitlist" aria-label="Close popup">
+      &times;
+    </button>
+
+    <h2 id="waitlistTitle">Join the waitlist</h2>
+    <p>Enter your email to receive registration updates.</p>
+
+    <form id="waitlistForm">
+      <label for="waitlistEmail">Email address</label>
+      <input
+        type="email"
+        id="waitlistEmail"
+        name="email"
+        placeholder="you@company.com"
+        autocomplete="email"
+        required
+        maxlength="254"
+      >
+
+      <!-- Honeypot: hidden from people, catches spam bots -->
+      <div style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+        <label for="waitlistWebsite">Website</label>
+        <input type="text" id="waitlistWebsite" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button class="btn" type="submit" id="waitlistSubmit">
+        Submit
+      </button>
+
+      <p id="waitlistMessage" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
 
   <!-- ===================== SPEAKER HUB ===================== -->
   <main id="v-hub" hidden>
@@ -1392,6 +1513,8 @@
       <span>Grid Innovation Hub × Integ</span>
     </div>
   </footer>
+
+  <script src="js/waitlist.js" defer></script>
 
   <script>
     (function () {

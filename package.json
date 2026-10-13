@@ -1,0 +1,8 @@
+{
+  "name": "power-gen-summit",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}
