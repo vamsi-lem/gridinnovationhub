@@ -306,6 +306,62 @@
       color: rgba(255, 255, 255, .75)
     }
 
+    /* Hero "Join Speakers From" logo strip: four equal cells. Each logo gets its own height so the
+       lettering reads at the same size (about 21px cap height on desktop) regardless of how much
+       of the image file is taken up by a wave, a dot ring, or padding. */
+    .speaker-logos {
+      --logo-scale: 1;
+      list-style: none;
+      margin: -6px auto 0;
+      padding: 0;
+      width: 100%;
+      max-width: 760px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: center;
+      gap: 24px clamp(24px, 4vw, 44px)
+    }
+
+    .speaker-logos li {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .speaker-logos img {
+      display: block;
+      width: auto;
+      height: calc(var(--lh) * var(--logo-scale));
+      opacity: .88;
+      transition: opacity .2s ease
+    }
+
+    .speaker-logos .logo-nerc img {
+      --lh: 21px /* caps fill the whole image height */
+    }
+
+    .speaker-logos .logo-epri img {
+      --lh: 38px /* letters are 55% of the image height */
+    }
+
+    .speaker-logos .logo-charles img {
+      --lh: 30px; /* wave sits above the lowercase wordmark; nudge up so the text centres with the others */
+      transform: translateY(calc(-3px * var(--logo-scale)))
+    }
+
+    .speaker-logos .logo-integ img {
+      --lh: 29px /* dot ring is taller than the bold wordmark */
+    }
+
+    .speaker-logos img:hover {
+      opacity: 1
+    }
+
+    .speaker-logos .logo-invert {
+      filter: brightness(0) invert(1)
+    }
+
     .hub-hero {
       min-height: clamp(420px, 60vh, 540px);
       background:
@@ -883,6 +939,19 @@
         order: 2
       }
 
+      #top .speaker-logos {
+        --logo-scale: .85;
+        order: 3;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 28px;
+        max-width: 340px;
+        margin: -4px auto 0
+      }
+
+      .speaker-logos li {
+        height: 38px
+      }
+
       .hero .lede {
         font-size: 17px
       }
@@ -1011,6 +1080,14 @@
 
     /* Very small phones */
     @media (max-width:380px) {
+      #top .speaker-logos {
+        --logo-scale: .78
+      }
+
+      .speaker-logos li {
+        height: 32px
+      }
+
       .brand-text {
         display: none
       }
@@ -1207,7 +1284,13 @@
                 <use href="#gih-arrow" />
               </svg></a>
           </div>
-          <p class="soon">Speakers announced in November</p>
+          <p class="soon">Industry Leaders Joining Us</p>
+          <ul class="speaker-logos" aria-label="Organizations our speakers come from">
+            <li class="logo-nerc"><img src="images/nerc-logo.webp" alt="NERC" width="1999" height="434" class="logo-invert"></li>
+            <li class="logo-epri"><img src="images/epri-logo.svg" alt="EPRI" width="50" height="18"></li>
+            <li class="logo-charles"><img src="images/charles-river-logo.svg" alt="Charles River" width="116" height="25"></li>
+            <li class="logo-integ"><img src="images/integ-logo.svg" alt="Integ" width="1332" height="304"></li>
+          </ul>
         </div>
       </div>
     </section>
