@@ -540,11 +540,142 @@
       border-radius: 999px
     }
 
+    /* Agenda: session length under the start time */
+    .rows .t .dur {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-3);
+      margin-top: 4px
+    }
+
+    /* Agenda: session topic line (bold, above the description) */
+    .rows p.topic {
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 8px
+    }
+
+    /* Agenda: speaker cards (photo, name, job title, company, company logo) */
+    .speakers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .spk {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card)
+    }
+
+    .spk-photo {
+      flex: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--gray-2)
+    }
+
+    .spk-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .spk-info strong {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink)
+    }
+
+    .spk-info span {
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--ink-3)
+    }
+
+    .spk-logo {
+      flex: none;
+      margin-left: auto;
+      height: 36px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain
+    }
+
+    .spk.tba {
+      background: var(--gray-2);
+      border-style: dashed
+    }
+
+    /* Speaker name linking to LinkedIn */
+    .spk-li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: inherit;
+      text-decoration: none
+    }
+
+    .spk-li svg {
+      color: var(--ink-3);
+      transition: color .2s ease
+    }
+
+    .spk-li:hover {
+      color: var(--blue);
+      text-decoration: underline
+    }
+
+    .spk-li:hover svg {
+      color: var(--blue)
+    }
+
     @media (max-width:620px) {
 
       .rows li,
       .rows.wide-t li {
         grid-template-columns: 1fr
+      }
+
+      .rows .t {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        padding-top: 0
+      }
+
+      .rows .t .dur {
+        margin-top: 0
+      }
+
+      .rows .t .dur::before {
+        content: "\00B7";
+        margin-right: 8px
+      }
+    }
+
+    @media (max-width:480px) {
+      .spk {
+        flex-wrap: wrap
+      }
+
+      .spk-info {
+        flex: 1 1 calc(100% - 70px)
+      }
+
+      .spk-logo {
+        margin-left: 70px /* lines up with the text column (photo 56px + gap 14px) */
       }
     }
 
@@ -1270,7 +1401,7 @@
         <div class="hero-inner">
           <p class="eyebrow">Grid Innovation Hub × Integ</p>
           <h1>2027 Power Generation Reliability Summit</h1>
-          <p class="when"><span class="date">February 4, 2027 · Virtual · 12–5 PM ET</span><br><span class="theme">AI
+          <p class="when"><span class="date">February 4, 2027 · Virtual · 10 AM – 5 PM ET</span><br><span class="theme">AI
               and the future of generation reliability</span></p>
           <p class="lede">Data center load growth, new NERC standards for inverter-based resources, and expanded GADS
             reporting are increasing the work it takes to keep generation reliable and compliant. The 2027 Power
@@ -1327,64 +1458,161 @@
           <h2>What we'll cover</h2>
         </div>
         <ul class="rows">
-          <li><span class="t">12:00 PM</span>
+          <li><span class="t"><span class="time">10:00 AM</span><span class="dur">10 min</span></span>
             <div>
               <h3>Opening remarks</h3>
             </div>
           </li>
-          <li><span class="t">12:10 PM</span>
+          <li><span class="t"><span class="time">10:10 AM</span><span class="dur">45 min</span></span>
             <div>
               <h3>Opening keynote <span class="pill">Keynote</span></h3>
-              <p>NERC's 2027 standards, deadlines and priorities for generation owners.</p>
+              <p>Topic to be announced.</p>
+              <div class="speakers">
+              <div class="spk">
+                <div class="spk-info">
+                  <strong>Name to be announced</strong>
+                  <span>NERC</span>
+                </div>
+                <img class="spk-logo" src="images/nerc-logo.webp" alt="NERC logo" width="120" height="26">
+              </div>
+              </div>
             </div>
           </li>
-          <li><span class="t">12:45 PM</span>
+          <li><span class="t"><span class="time">10:55 AM</span><span class="dur">40 min</span></span>
             <div>
-              <h3>Fireside chat: how upper management views reliability</h3>
+              <h3>Fireside chat 1: How a well run NERC compliance program enables larger corporate objectives</h3>
               <p>A generation executive on how leadership measures reliability and sets reliability budgets.</p>
+              <div class="speakers">
+              <div class="spk">
+                <div class="spk-info">
+                  <strong>Executive</strong>
+                  <span>To be announced</span>
+                </div>
+              </div>
+              <div class="spk">
+                <div class="spk-info">
+                  <strong>Dressel</strong>
+                  <span>Details to be added</span>
+                </div>
+              </div>
+              </div>
             </div>
           </li>
-          <li class="muted"><span class="t">1:20 PM</span>
+          <li><span class="t"><span class="time">11:35 AM</span><span class="dur">30 min</span></span>
+            <div>
+              <h3>Talk</h3>
+              <p>Topic to be announced.</p>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Speaker to be announced</strong>
+                </div>
+              </div>
+              </div>
+            </div>
+          </li>
+          <li class="muted"><span class="t"><span class="time">12:05 PM</span><span class="dur">15 min</span></span>
             <div>
               <h3>Break <span class="pill">Break</span></h3>
             </div>
           </li>
-          <li><span class="t">1:30 PM</span>
+          <li><span class="t"><span class="time">12:20 PM</span><span class="dur">30 min</span></span>
+            <div>
+              <h3>The future of AI in reliability</h3>
+              <div class="speakers">
+              <div class="spk">
+                <img class="spk-photo" src="images/speakers/amit-patel.jpg" alt="Amit Patel" width="56" height="56">
+                <div class="spk-info">
+                  <strong><a class="spk-li" href="https://www.linkedin.com/in/amit-patel-4a18264/" target="_blank" rel="noopener">Amit Patel<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></strong>
+                  <span>Managing Director</span>
+                  <span>Integ Enterprise Consulting, Inc.</span>
+                </div>
+                <img class="spk-logo" src="images/integ-logo-blue.svg" alt="Integ logo" width="120" height="27">
+              </div>
+              </div>
+            </div>
+          </li>
+          <li><span class="t"><span class="time">12:50 PM</span><span class="dur">45 min</span></span>
             <div>
               <h3>Tech talk: AI in reliability <span class="pill">Panel</span></h3>
               <p>Operators and consultants on where AI is in use at plants today, what worked, and what it cost.</p>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Panelists to be announced</strong>
+                </div>
+              </div>
+              </div>
             </div>
           </li>
-          <li><span class="t">2:30 PM</span>
+          <li><span class="t"><span class="time">1:35 PM</span><span class="dur">35 min</span></span>
             <div>
               <h3>Integ case study with client</h3>
-              <p>A generation owner and Integ on a reliability reporting problem, the solution and the results, with a
-                live demo.</p>
+              <p>A generation owner and Integ on a reliability reporting problem, the solution and the results, with a live demo.</p>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Speaker to be announced</strong>
+                </div>
+              </div>
+              </div>
             </div>
           </li>
-          <li class="muted"><span class="t">3:05 PM</span>
+          <li class="muted"><span class="t"><span class="time">2:10 PM</span><span class="dur">15 min</span></span>
             <div>
               <h3>Break <span class="pill">Break</span></h3>
             </div>
           </li>
-          <li><span class="t">3:15 PM</span>
+          <li><span class="t"><span class="time">2:25 PM</span><span class="dur">30 min</span></span>
+            <div>
+              <h3>Fireside chat 2</h3>
+              <p>Topic to be announced.</p>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Speaker to be announced</strong>
+                </div>
+              </div>
+              </div>
+            </div>
+          </li>
+          <li><span class="t"><span class="time">2:55 PM</span><span class="dur">45 min</span></span>
             <div>
               <h3>Analytics and reporting <span class="pill">Panel</span></h3>
               <p>GADS reporting, PRC-030 event analysis and management reporting.</p>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Panelists to be announced</strong>
+                </div>
+              </div>
+              </div>
             </div>
           </li>
-          <li><span class="t">4:15 PM</span>
+          <li><span class="t"><span class="time">3:40 PM</span><span class="dur">45 min</span></span>
             <div>
               <h3>Closing keynote <span class="pill">Keynote</span></h3>
-              <p>Integ leadership on how AI and automation will change generation reliability work.</p>
+              <p class="topic">The Next Era of Power Generation Reliability: From Asset Performance to Enterprise Resilience</p>
+              <p>Power generation is entering a period of unprecedented change. Aging thermal fleets, evolving grid requirements, growing electrification, extreme weather, workforce transitions, increasing dependence on digital technologies, and the rapid growth of inverter-based resources are reshaping what reliability means for generation owners and operators.</p>
+              <div class="speakers">
+              <div class="spk">
+                <img class="spk-photo" src="images/speakers/michael-caravaggio.jpg" alt="Michael Caravaggio" width="56" height="56">
+                <div class="spk-info">
+                  <strong><a class="spk-li" href="https://www.linkedin.com/in/michael-caravaggio/" target="_blank" rel="noopener">Michael Caravaggio<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></strong>
+                  <span>Vice President - Energy Supply - Reliability and Environment</span>
+                  <span>EPRI</span>
+                </div>
+                <img class="spk-logo" src="images/epri-logo-dark.svg" alt="EPRI logo" width="100" height="36">
+              </div>
+              </div>
             </div>
           </li>
-          <li><span class="t">4:45 PM</span>
+          <li><span class="t"><span class="time">4:25 PM</span><span class="dur">5 min</span></span>
             <div>
               <h3>Closing remarks</h3>
             </div>
           </li>
-          <li class="muted"><span class="t">5:00 PM</span>
+          <li class="muted"><span class="t"><span class="time">4:30 PM</span><span class="dur">30 min</span></span>
             <div>
               <h3>Q4 GADS and PRC-030 Q&amp;A <span class="pill">Optional</span></h3>
               <p>30 minutes with Integ staff.</p>
@@ -1492,7 +1720,7 @@
         <div class="hero-inner">
           <p class="eyebrow">2027 Power Generation Reliability Summit</p>
           <h1>Speaker Hub</h1>
-          <p class="when"><span class="date">February 4, 2027 · Virtual on Zoom · 12–5 PM ET</span></p>
+          <p class="when"><span class="date">February 4, 2027 · Virtual on Zoom · 10 AM – 5 PM ET</span></p>
           <p class="lede">Deadlines, setup and promotion materials for summit speakers.</p>
         </div>
       </div>
@@ -1586,7 +1814,7 @@
           <p>Each speaker gets a personal registration link. Edit this post and add your link.</p>
         </div>
         <div class="copy" id="post">I'm speaking at the 2027 Power Generation Reliability Summit on Thursday, February 4
-          (virtual, 12–5 PM ET).
+          (virtual, 10 AM – 5 PM ET).
 
           I'll be on the [session name] session, covering [your topic].
 
