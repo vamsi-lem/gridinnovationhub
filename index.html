@@ -326,20 +326,21 @@
       color: rgba(255, 255, 255, .75)
     }
 
-    /* Hero "Join Speakers From" logo strip: four equal cells. Each logo gets its own height so the
+    /* Hero "Join Speakers From" logo strip: six equal cells. Each logo gets its own height so the
        lettering reads at the same size (about 21px cap height on desktop) regardless of how much
-       of the image file is taken up by a wave, a dot ring, or padding. */
+       of the image file is taken up by a wave, a dot ring, or padding. The strip is centred and may
+       run wider than the hero text column. */
     .speaker-logos {
       --logo-scale: 1;
+      --strip-w: min(1040px, calc(100vw - 2 * var(--pad-x)));
       list-style: none;
-      margin: -6px auto 0;
+      width: var(--strip-w);
+      margin: -6px calc(50% - var(--strip-w) / 2) 0; /* centre even when wider than the text column */
       padding: 0;
-      width: 100%;
-      max-width: 760px;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       align-items: center;
-      gap: 24px clamp(24px, 4vw, 44px)
+      gap: 24px clamp(20px, 2.5vw, 32px)
     }
 
     .speaker-logos li {
@@ -372,6 +373,21 @@
 
     .speaker-logos .logo-integ img {
       --lh: 29px /* dot ring is taller than the bold wordmark */
+    }
+
+    .speaker-logos .logo-nextera img {
+      --lh: 46px /* two-line mark: wordmark above "Energy" and the swoosh */
+    }
+
+    .speaker-logos .logo-odec img {
+      --lh: 50px /* stacked badge: small name, ODEC wordmark, waves */
+    }
+
+    @media (max-width:900px) {
+      .speaker-logos {
+        --strip-w: min(560px, calc(100vw - 2 * var(--pad-x)));
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+      }
     }
 
     .speaker-logos img:hover {
@@ -1432,6 +1448,9 @@
             <li class="logo-epri"><img src="images/epri-logo.svg" alt="EPRI" width="50" height="18"></li>
             <li class="logo-charles"><img src="images/charles-river-logo.svg" alt="Charles River" width="116" height="25"></li>
             <li class="logo-integ"><img src="images/integ-logo.svg" alt="Integ" width="1332" height="304"></li>
+            <li class="logo-nextera"><img src="images/nextera-logo.png" alt="NextEra Energy" width="144" height="64" class="logo-invert"></li>
+            <li class="logo-odec"><img src="images/odec-logo.png" alt="ODEC" width="172" height="135"></li>
+
           </ul>
         </div>
       </div>
@@ -1445,8 +1464,7 @@
             <h2>From NERC's 2027 standards to AI at the plant</h2>
           </div>
           <div class="band-copy">
-            <p>Hear what NERC requires of generation owners in 2027: PRC-029 and PRC-030 for inverter-based resources,
-              Category 2 registration, EOP-012-3 cold weather requirements, and GADS reporting.</p>
+            <p>Hear what load growth means for your existing assets, how leadership teams decide where to invest in reliability, and where AI is improving plant performance today.</p>
             <p>See how generation executives measure and fund reliability, what is driving forced outages, and where
               operators are using AI, automation and analytics at their plants today.</p>
           </div>
@@ -1491,15 +1509,10 @@
           </li>
           <li><span class="t"><span class="time">10:55 AM</span><span class="dur">40 min</span></span>
             <div>
-              <h3>Fireside chat 1: How a well run NERC compliance program enables larger corporate objectives</h3>
-              <p>A generation executive on how leadership measures reliability and sets reliability budgets.</p>
+              <h3>Panel: How upper management views reliability</h3>
+              <p>Generation leaders on how upper management measures reliability and sets reliability budgets.</p>
               <div class="speakers">
-              <div class="spk">
-                <div class="spk-info">
-                  <strong>Executive</strong>
-                  <span>To be announced</span>
-                </div>
-              </div>
+             
               <div class="spk">
                 <img class="spk-photo" src="images/speakers/andrew-dressel.jpg" alt="Andrew Dressel" width="56" height="56">
                 <div class="spk-info">
@@ -1508,6 +1521,13 @@
                   <span>Charles River Associates</span>
                 </div>
                 <img class="spk-logo" src="images/cra-logo.jpg" alt="CRA logo" width="36" height="36">
+              </div>
+              <div class="speakers">
+              <div class="spk tba">
+                <div class="spk-info">
+                  <strong>Panelists to be announced</strong>
+                </div>
+              </div>
               </div>
               </div>
             </div>
@@ -1532,18 +1552,8 @@
           </li>
           <li><span class="t"><span class="time">12:20 PM</span><span class="dur">30 min</span></span>
             <div>
-              <h3>The future of AI in reliability</h3>
-              <div class="speakers">
-              <div class="spk">
-                <img class="spk-photo" src="images/speakers/amit-patel.jpg" alt="Amit Patel" width="56" height="56">
-                <div class="spk-info">
-                  <strong><a class="spk-li" href="https://www.linkedin.com/in/amit-patel-4a18264/" target="_blank" rel="noopener">Amit Patel<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></strong>
-                  <span>Managing Director</span>
-                  <span>Integ Enterprise Consulting, Inc.</span>
-                </div>
-                <img class="spk-logo" src="images/integ-logo-blue.svg" alt="Integ logo" width="120" height="27">
-              </div>
-              </div>
+              <h3>Talk: The impact of data center and load growth on generation reliability and expectations for existing assets</h3>
+             
             </div>
           </li>
           <li><span class="t"><span class="time">12:50 PM</span><span class="dur">45 min</span></span>
@@ -1551,11 +1561,15 @@
               <h3>Tech talk: AI in reliability <span class="pill">Panel</span></h3>
               <p>Operators and consultants on where AI is in use at plants today, what worked, and what it cost.</p>
               <div class="speakers">
-              <div class="spk tba">
+                <div class="spk">
+                <img class="spk-photo" src="images/brian .png" alt="Amit Patel" width="56" height="56">
                 <div class="spk-info">
-                  <strong>Panelists to be announced</strong>
+                  <strong>Brian Heinbaugh</strong><span>Vice President of Operations & Asset Management</span>
+                  <span>Old Dominion Electric Cooperative (ODEC)</span>
                 </div>
+                <img class="spk-logo" src="images/brian-logo.jpeg" alt="Integ logo" width="120" height="27">
               </div>
+              
               </div>
             </div>
           </li>
@@ -1579,12 +1593,11 @@
           </li>
           <li><span class="t"><span class="time">2:25 PM</span><span class="dur">30 min</span></span>
             <div>
-              <h3>Fireside chat 2</h3>
-              <p>Topic to be announced.</p>
+              <h3>How a well-run NERC compliance program enables larger corporate objectives</h3>
               <div class="speakers">
               <div class="spk tba">
                 <div class="spk-info">
-                  <strong>Speaker to be announced</strong>
+                  <strong>Speakers to be announced</strong>
                 </div>
               </div>
               </div>
@@ -1592,14 +1605,18 @@
           </li>
           <li><span class="t"><span class="time">2:55 PM</span><span class="dur">45 min</span></span>
             <div>
-              <h3>Analytics and reporting <span class="pill">Panel</span></h3>
+              <h3>Talk: Analytics and reporting <span class="pill">Panel</span></h3>
               <p>GADS reporting, PRC-030 event analysis and management reporting.</p>
               <div class="speakers">
-              <div class="spk tba">
+                <div class="spk">
+                <img class="spk-photo" src="images/speakers/amit-patel.jpg" alt="Amit Patel" width="56" height="56">
                 <div class="spk-info">
-                  <strong>Panelists to be announced</strong>
+                  <strong>Amit Patel</strong><span>Managing Director</span>
+                  <span>Integ Enterprise Consulting, Inc.</span>
                 </div>
+                <img class="spk-logo" src="images/integ-logo-blue.svg" alt="Integ logo" width="120" height="27">
               </div>
+              
               </div>
             </div>
           </li>
