@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>2027 Power Generation Reliability Summit</title>
   <meta name="description"
-    content="February 4, 2027 · Virtual · 10 AM – 5 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
+    content="February 4, 2027 · Virtual · 10 AM – 4:30 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
 
   <!-- Link preview when the page is shared (LinkedIn, Slack, Teams, X) -->
   <link rel="canonical" href="https://reliability.gridinnovationhub.com/">
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Grid Innovation Hub">
   <meta property="og:title" content="2027 Power Generation Reliability Summit">
   <meta property="og:description"
-    content="February 4, 2027 · Virtual · 10 AM – 5 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
+    content="February 4, 2027 · Virtual · 10 AM – 4:30 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
   <meta property="og:url" content="https://reliability.gridinnovationhub.com/">
   <meta property="og:image" content="https://reliability.gridinnovationhub.com/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="2027 Power Generation Reliability Summit">
   <meta name="twitter:description"
-    content="February 4, 2027 · Virtual · 10 AM – 5 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
+    content="February 4, 2027 · Virtual · 10 AM – 4:30 PM ET. NERC, generation executives and plant operators on what 2027 requires and the AI tools generation owners are using to meet it.">
   <meta name="twitter:image" content="https://reliability.gridinnovationhub.com/images/og-image.png">
 
   <!-- Favicon and logo downloaded from gridinnovationhub.com -->
@@ -652,6 +652,20 @@
     .spk.tba {
       background: var(--gray-2);
       border-style: dashed
+    }
+
+    /* Small role label after a speaker's name, e.g. "Lead" */
+    .spk-info .spk-tag {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 9px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--blue);
+      background: var(--blue-tint);
+      border-radius: 999px;
+      vertical-align: 1px
     }
 
     /* Speaker name linking to LinkedIn */
@@ -1433,7 +1447,7 @@
         <div class="hero-inner">
           <p class="eyebrow">Grid Innovation Hub × Integ</p>
           <h1>2027 Power Generation Reliability Summit</h1>
-          <p class="when"><span class="date">February 4, 2027 · Virtual · 10 AM – 5 PM ET</span><br><span class="theme">AI
+          <p class="when"><span class="date">February 4, 2027 · Virtual · 10 AM – 4:30 PM ET</span><br><span class="theme">AI
               and the future of generation reliability</span></p>
           <p class="lede">Data centers and electrification are driving load growth, and generation owners are being asked to deliver more from their plants. The 2027 Power Generation Reliability Summit brings NERC, EPRI, generation executives and plant operators together to share how leadership teams invest in reliability and where AI is raising plant performance.</p>
           <div class="ctas">
@@ -1558,18 +1572,27 @@
           </li>
           <li><span class="t"><span class="time">12:50 PM</span><span class="dur">45 min</span></span>
             <div>
-              <h3>Tech talk: AI in reliability <span class="pill">Panel</span></h3>
-              <p>Operators and consultants on where AI is in use at plants today, what worked, and what it cost.</p>
+              <h3>Opportunities &amp; Heartbreak: AI in Operations</h3>
+              <p>Where AI is earning its place in plant operations, where it has fallen short, and how people and AI share decisions on the plant floor.</p>
               <div class="speakers">
                 <div class="spk">
-                <img class="spk-photo" src="images/brian .png" alt="Amit Patel" width="56" height="56">
-                <div class="spk-info">
-                  <strong>Brian Heinbaugh</strong><span>Vice President of Operations & Asset Management</span>
-                  <span>Old Dominion Electric Cooperative (ODEC)</span>
+                  <img class="spk-photo" src="images/brian .png" alt="Brian Heinbaugh" width="56" height="56">
+                  <div class="spk-info">
+                    <strong>Brian Heinbaugh <span class="spk-tag">Lead</span></strong>
+                    <span>Vice President of Operations &amp; Asset Management</span>
+                    <span>Old Dominion Electric Cooperative</span>
+                  </div>
+                  <img class="spk-logo" src="images/brian-logo.jpeg" alt="ODEC logo" width="36" height="36">
                 </div>
-                <img class="spk-logo" src="images/brian-logo.jpeg" alt="Integ logo" width="120" height="27">
-              </div>
-              
+                <div class="spk">
+                  <img class="spk-photo" src="images/speakers/amit-patel.jpg" alt="Amit Patel" width="56" height="56">
+                  <div class="spk-info">
+                    <strong>Amit Patel</strong>
+                    <span>Managing Director</span>
+                    <span>Integ</span>
+                  </div>
+                  <img class="spk-logo" src="images/integ-logo-blue.svg" alt="Integ logo" width="120" height="27">
+                </div>
               </div>
             </div>
           </li>
@@ -1641,12 +1664,6 @@
           <li><span class="t"><span class="time">4:25 PM</span><span class="dur">5 min</span></span>
             <div>
               <h3>Closing remarks</h3>
-            </div>
-          </li>
-          <li class="muted"><span class="t"><span class="time">4:30 PM</span><span class="dur">30 min</span></span>
-            <div>
-              <h3>Q4 GADS and PRC-030 Q&amp;A <span class="pill">Optional</span></h3>
-              <p>30 minutes with Integ staff.</p>
             </div>
           </li>
         </ul>
@@ -1746,7 +1763,7 @@
         <div class="hero-inner">
           <p class="eyebrow">2027 Power Generation Reliability Summit</p>
           <h1>Speaker Hub</h1>
-          <p class="when"><span class="date">February 4, 2027 · Virtual on Zoom · 10 AM – 5 PM ET</span></p>
+          <p class="when"><span class="date">February 4, 2027 · Virtual on Zoom · 10 AM – 4:30 PM ET</span></p>
           <p class="lede">Deadlines, setup and promotion materials for summit speakers.</p>
         </div>
       </div>
@@ -1840,7 +1857,7 @@
           <p>Each speaker gets a personal registration link. Edit this post and add your link.</p>
         </div>
         <div class="copy" id="post">I'm speaking at the 2027 Power Generation Reliability Summit on Thursday, February 4
-          (virtual, 10 AM – 5 PM ET).
+          (virtual, 10 AM – 4:30 PM ET).
 
           I'll be on the [session name] session, covering [your topic].
 
