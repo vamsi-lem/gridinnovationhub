@@ -514,6 +514,115 @@
       color: var(--ink-2)
     }
 
+    /* ---------- Sticky register bar (phones only) ---------- */
+    .sticky-cta {
+      display: none
+    }
+
+    @media (max-width:640px) {
+      .sticky-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: var(--white);
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -6px 20px rgba(3, 7, 18, .12);
+        transform: translateY(100%);
+        visibility: hidden;
+        transition: transform .25s ease, visibility 0s linear .25s
+      }
+
+      .sticky-cta.is-visible {
+        transform: none;
+        visibility: visible;
+        transition: transform .25s ease, visibility 0s
+      }
+
+      .sticky-cta span {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink)
+      }
+
+      .sticky-cta .btn {
+        flex: none;
+        height: 42px;
+        padding: 0 16px;
+        font-size: 16px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .sticky-cta {
+        transition: none
+      }
+    }
+
+    /* ---------- Who should attend ---------- */
+    .who-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 40px clamp(40px, 6vw, 96px);
+      align-items: start
+    }
+
+    .who-copy h2 {
+      font-weight: 700;
+      font-size: clamp(32px, 2.6vw + 12px, 48px);
+      line-height: 1.1;
+      letter-spacing: -.01em
+    }
+
+    .who-copy p {
+      margin-top: 20px;
+      max-width: 520px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--ink-2)
+    }
+
+    .who-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .who-list li {
+      position: relative;
+      padding: 16px 0 16px 30px;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink)
+    }
+
+    .who-list li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 24px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--blue)
+    }
+
+    @media (max-width:860px) {
+      .who-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
     /* ---------- Agenda / deadline rows ---------- */
     .rows {
       list-style: none;
@@ -1119,6 +1228,10 @@
         order: 2
       }
 
+      #top .cohost {
+        order: 4 /* stays under the logo strip, which is order 3 */
+      }
+
       #top .speaker-logos {
         --logo-scale: .85;
         order: 3;
@@ -1338,80 +1451,6 @@
       }
     }
 
-    
-.waitlist-modal[hidden] {
-  display: none !important;
-}
-
-.waitlist-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.waitlist-box {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  padding: 32px;
-  background: #fff;
-  color: #000;
-  border-radius: 12px;
-}
-
-.waitlist-box h2 {
-  margin: 0 0 12px;
-}
-
-.waitlist-box input {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 8px 0 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font: inherit;
-}
-
-.waitlist-box label {
-  display: block;
-  font-weight: 600;
-}
-
-.waitlist-close {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  border: 0;
-  background: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-#waitlistMessage {
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-#waitlistMessage.is-success {
-  color: #137333;
-}
-
-#waitlistMessage.is-error {
-  color: #c5221f;
-}
-
-#waitlistSubmit:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
   </style>
 </head>
 
@@ -1435,7 +1474,7 @@
         <a href="#agenda" data-go="main">Agenda</a>
         <a href="#speaker-hub" data-go="hub">Speaker Hub <i class="fa-solid fa-arrow-right nav-arrow"
             aria-hidden="true"></i></a>
-        <a href="https://luma.com/grs2027" target="_blank"  class="nav-cta">Register now </a>
+        <a href="https://luma.com/grs2027?utm_source=website&amp;utm_medium=cta&amp;utm_campaign=grs2027&amp;utm_content=nav" target="_blank" rel="noopener" class="nav-cta">Register now</a>
       </nav>
     </div>
   </header>
@@ -1449,14 +1488,14 @@
           <h1>2027 Power Generation Reliability Summit</h1>
           <p class="when"><span class="date">February 4, 2027 · Virtual · 10 AM – 4:30 PM ET</span><br><span class="theme">AI
               and the future of generation reliability</span></p>
-          <p class="lede">Data centers and electrification are driving load growth, and generation owners are being asked to deliver more from their plants. The 2027 Power Generation Reliability Summit brings NERC, EPRI, generation executives and plant operators together to share how leadership teams invest in reliability and where AI is raising plant performance.</p>
+          <p class="lede">Built for the people responsible for plant reliability, performance and compliance. Join NERC, EPRI and generation leaders on February 4 to see how peers use AI and automation to keep units available, get more from existing plants and run compliance with less manual work.</p>
           <div class="ctas">
-            <a class="btn" href="https://luma.com/grs2027" target="_blank">Register now</a>
+            <a class="btn" href="https://luma.com/grs2027?utm_source=website&amp;utm_medium=cta&amp;utm_campaign=grs2027&amp;utm_content=hero" target="_blank" rel="noopener">Register now</a>
             <a class="btn" href="#speaker-hub" data-go="hub">Speaker hub <svg class="ico" aria-hidden="true">
                 <use href="#gih-arrow" />
               </svg></a>
           </div>
-          <p class="soon">Industry Leaders Joining Us</p>
+          <p class="soon">Speakers from</p>
           <ul class="speaker-logos" aria-label="Organizations our speakers come from">
             <li class="logo-nerc"><img src="images/nerc-logo.webp" alt="NERC" width="1999" height="434" class="logo-invert"></li>
             <li class="logo-epri"><img src="images/epri-logo.svg" alt="EPRI" width="50" height="18"></li>
@@ -1464,7 +1503,26 @@
             <li class="logo-integ"><img src="images/integ-logo.svg" alt="Integ" width="1332" height="304"></li>
             <li class="logo-nextera"><img src="images/nextera-logo.png" alt="NextEra Energy" width="144" height="64" class="logo-invert"></li>
             <li class="logo-odec"><img src="images/odec-logo.png" alt="ODEC" width="172" height="135"></li>
+          </ul>
+          <p class="soon cohost">Co-hosted by Grid Innovation Hub, a community of 3,000+ power industry professionals, and Integ.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="sec who" id="who">
+      <div class="wrap">
+        <div class="who-grid">
+          <div class="who-copy">
+            <h2>Who should attend</h2>
+            <p>Professionals responsible for plant reliability, performance and compliance at generation owners and operators, and the leaders they report to.</p>
+          </div>
+          <ul class="who-list">
+            <li>Plant Manager, Plant Operations Manager</li>
+            <li>Reliability Manager, Reliability Engineer</li>
+            <li>Asset Performance Manager, Performance Engineer</li>
+            <li>NERC Compliance Manager, Compliance Analyst</li>
+            <li>Outage and Reporting Coordinator</li>
+            <li>Director or VP of Generation, Plant Operations or Compliance</li>
           </ul>
         </div>
       </div>
@@ -1703,58 +1761,22 @@
       <div class="dark-grid">
         <img src="images/waitlist.avif" alt="">
         <div class="dark-copy">
-          <h2>Save your spot</h2>
-          <p>Registration is now open. Reserve your place at the summit and we’ll email you speaker announcements as they’re confirmed.</p>
+          <h2>Register for February 4</h2>
+          <p>Registration is open and has no cost. Each registration is reviewed and confirmed within 48 hours. Attend the full day or individual sessions. Registrants receive the recordings within 48 hours after the event and speaker announcements as they are confirmed.</p>
           
-          <a href="https://luma.com/grs2027" target="_blank"  class="btn">Register Now </a>
+          <a href="https://luma.com/grs2027?utm_source=website&amp;utm_medium=cta&amp;utm_campaign=grs2027&amp;utm_content=footer" target="_blank" rel="noopener" class="btn">Register now</a>
 
   
 
         </div>
       </div>
     </section>
+    <!-- Sticky register bar: phones only, shown once the hero has scrolled out of view -->
+    <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+      <span>Feb 4 · Online · No cost</span>
+      <a class="btn" href="https://luma.com/grs2027?utm_source=website&amp;utm_medium=cta&amp;utm_campaign=grs2027&amp;utm_content=sticky" target="_blank" rel="noopener">Register now</a>
+    </div>
   </main>
-
-  
-<div class="waitlist-modal" id="waitlistModal" hidden>
-  <div class="waitlist-box" role="dialog"
-       aria-modal="true" aria-labelledby="waitlistTitle">
-
-    <button type="button" class="waitlist-close"
-            id="closeWaitlist" aria-label="Close popup">
-      &times;
-    </button>
-
-    <h2 id="waitlistTitle">Join the waitlist</h2>
-    <p>Enter your email to receive registration updates.</p>
-
-    <form id="waitlistForm">
-      <label for="waitlistEmail">Email address</label>
-      <input
-        type="email"
-        id="waitlistEmail"
-        name="email"
-        placeholder="you@company.com"
-        autocomplete="email"
-        required
-        maxlength="254"
-      >
-
-      <!-- Honeypot: hidden from people, catches spam bots -->
-      <div style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
-        <label for="waitlistWebsite">Website</label>
-        <input type="text" id="waitlistWebsite" name="website" tabindex="-1" autocomplete="off">
-      </div>
-
-      <button class="btn" type="submit" id="waitlistSubmit">
-        Submit
-      </button>
-
-      <p id="waitlistMessage" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</div>
-
 
   <!-- ===================== SPEAKER HUB ===================== -->
   <main id="v-hub" hidden>
@@ -1891,8 +1913,6 @@
     </div>
   </footer>
 
-  <script src="js/waitlist.js" defer></script>
-
   <script>
     (function () {
       var main = document.getElementById('v-main'), hub = document.getElementById('v-hub');
@@ -1942,6 +1962,22 @@
         function sel() { var r = document.createRange(); r.selectNodeContents(p); var s = getSelection(); s.removeAllRanges(); s.addRange(r); d.textContent = 'Selected, press Ctrl/Cmd+C'; }
         try { navigator.clipboard.writeText(p.innerText).then(function () { d.textContent = 'Copied' }, sel) } catch (e) { sel() }
       });
+    })();
+  </script>
+  <script>
+    // Sticky register bar: visible once the hero is out of view, hidden again
+    // while the closing "Register" section is on screen (it has its own button).
+    (function () {
+      var bar = document.getElementById('stickyCta'), hero = document.getElementById('top'), closing = document.getElementById('waitlist');
+      if (!bar || !hero || !('IntersectionObserver' in window)) return;
+      var heroOut = false, closingIn = false;
+      function sync() {
+        var on = heroOut && !closingIn;
+        bar.classList.toggle('is-visible', on);
+        bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+      }
+      new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; sync(); }).observe(hero);
+      if (closing) new IntersectionObserver(function (e) { closingIn = e[0].isIntersecting; sync(); }).observe(closing);
     })();
   </script>
 </body>
