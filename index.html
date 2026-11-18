@@ -763,6 +763,21 @@
       border-style: dashed
     }
 
+    /* Speaker bio: a full-width row under the photo, name and logo */
+    .spk.has-bio {
+      flex-wrap: wrap
+    }
+
+    .rows .spk .spk-bio {
+      flex: 0 0 100%;
+      margin-top: 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-2)
+    }
+
     /* Small role label after a speaker's name, e.g. "Lead" */
     .spk-info .spk-tag {
       display: inline-block;
@@ -1566,10 +1581,10 @@
           </li>
           <li><span class="t"><span class="time">10:10 AM</span><span class="dur">45 min</span></span>
             <div>
-              <h3>Keynote: Lonnie Ratliff, Director of Compliance Assurance &amp; Certification at NERC</h3>
-              <p>Topic to be announced.</p>
+              <h3>Opening keynote <span class="pill">Keynote</span></h3>
+              <p class="topic">Keynote: Lonnie Ratliff, Director of Compliance Assurance &amp; Certification at NERC</p>
               <div class="speakers">
-                <div class="spk">
+                <div class="spk has-bio">
                   <img class="spk-photo" src="images/speakers/lonnie-ratliff.jpg" alt="Lonnie Ratliff" width="56" height="56">
                   <div class="spk-info">
                     <strong>Lonnie Ratliff</strong>
@@ -1577,6 +1592,7 @@
                     <span>NERC</span>
                   </div>
                   <img class="spk-logo" src="images/nerc-logo.webp" alt="NERC logo" width="120" height="26">
+                  <p class="spk-bio">Lonnie J Ratliff is the Director of Compliance Assurance and Certification at NERC. He has been with NERC for 7 years and prior to that he spent 4 years at SERC Reliability. He has over 20 years of Information Technology experience and is proficient with a wide variety of system and network security solutions. Mr. Ratliff is a Certified Systems Security Professional (CISSP), a Certified Information Systems Auditor (CISA), and has held numerous other industry certifications.</p>
                 </div>
               </div>
             </div>
